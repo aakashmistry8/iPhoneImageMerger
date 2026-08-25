@@ -16,7 +16,7 @@ from src.verifier import verify_copies
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Safely consolidate iPhone image imports by copy-only deduplication")
-    parser.add_argument("--source-dir", type=Path, default=Path("D:/Data/Pictures/iphone"))
+    parser.add_argument("--source-dir", type=Path, default=Path("D:/Data/Pictures/iphone/Code/DemoTest"))
     parser.add_argument("--output-root", type=Path, default=None)
     parser.add_argument("--dry-run", action="store_true", help="Scan and report without copying")
     parser.add_argument("--verify-copy", dest="verify_copy", action="store_true", default=True)
