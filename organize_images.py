@@ -9,14 +9,14 @@ from src.copier import copy_selected_files
 from src.duplicate_detector import detect_exact_duplicates
 from src.metadata import build_file_records
 from src.reporter import write_reports
-from src.scanner import scan_images
+from src.scanner import scan_media
 from src.selector import select_representatives
 from src.verifier import verify_copies
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Safely consolidate iPhone image imports by copy-only deduplication")
-    parser.add_argument("--source-dir", type=Path, default=Path("D:/Data/Pictures/iphone"))
+    parser = argparse.ArgumentParser(description="Safely consolidate iPhone image and video imports by copy-only deduplication")
+    parser.add_argument("--source-dir", type=Path, default=Path("D:/Data/Pictures/iphone/Code/DemoTest"))
     parser.add_argument("--output-root", type=Path, default=None)
     parser.add_argument("--dry-run", action="store_true", help="Scan and report without copying")
     parser.add_argument("--verify-copy", dest="verify_copy", action="store_true", default=True)
@@ -44,7 +44,7 @@ def validate_paths(source_dir: Path, output_dir: Path) -> None:
 
 def run(config: Config, output_dir: Path) -> dict[str, int]:
     output_dir.mkdir(parents=True, exist_ok=False)
-    files = scan_images(config.source_dir, config.supported_extensions)
+    files = scan_media(config.source_dir, config.supported_extensions)
     records = build_file_records(files, config.source_dir)
     duplicate_groups = detect_exact_duplicates(records)
     selected = select_representatives(duplicate_groups)

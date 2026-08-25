@@ -15,6 +15,12 @@ SUPPORTED_EXTENSIONS = {
     ".tiff",
     ".bmp",
     ".gif",
+    ".mov",
+    ".mp4",
+    ".m4v",
+    ".avi",
+    ".mkv",
+    ".3gp",
 }
 
 
