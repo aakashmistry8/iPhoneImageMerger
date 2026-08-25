@@ -1,6 +1,6 @@
-# iPhone Image Deduplication & Consolidation Tool
+# iPhone Image and Video Deduplication & Consolidation Tool
 
-A safe, non-destructive Python utility for scanning an iPhone image import directory, identifying exact duplicates and potential near-duplicates, and creating a clean consolidated copy of the image collection.
+A safe, non-destructive Python utility for scanning an iPhone image and video import directory, identifying exact duplicates and potential near-duplicates, and creating a clean consolidated copy of the media collection.
 
 The project is designed for situations where photos have been imported from an iPhone multiple times into different folders, resulting in duplicate files, different filenames, different filesystem dates, different metadata, resized copies, recompressed copies, and other variations.
 
@@ -211,9 +211,15 @@ The application should support common iPhone and general image formats, includin
 .tiff
 .bmp
 .gif
+.mov
+.mp4
+.m4v
+.avi
+.mkv
+.3gp
 ```
 
-The supported extensions can be configured.
+Video files are scanned, hashed, deduplicated by exact content, copied, and verified using the same conservative copy-only workflow as images. The supported extensions can be configured.
 
 Non-image files are ignored unless explicitly configured otherwise.
 
